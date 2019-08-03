@@ -1,0 +1,7 @@
+{
+  "nextId":3,
+  "data": [
+    {"id": 1, "title": "french hot dog", "img":"//localhost:3000/uploads/1.jpeg"},
+    {"id": 2, "title": "american hot dog", "img":"//localhost:3000/uploads/2.jpg"}
+  ]
+}
