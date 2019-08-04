@@ -1,8 +1,18 @@
-<form [formGroup]="form">
-  <mat-grid-list cols="4">
-    <mat-grid-tile>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <p>
+            <img width="100" [src]="form.controls['img'].value">
+        </p>
+        <input type="file"  #imageInput (change)="onImageSelected()">
+    </div>
+    <mat-form-field>
+        <input matInput formControlName="title" placeholder="Title">
+    </mat-form-field>
+    <div>
+        <button type="submit" mat-button mat-stroked-button color="primary">{{btnText}}</button>
+        <button type="button" *ngIf="form.dirty || hotdog" (click)="onClear()"
+                mat-button mat-stroked-button color="secondary">Clear</button>
+    </div>
 
-    </mat-grid-tile>
-  </mat-grid-list>
 </form>
 

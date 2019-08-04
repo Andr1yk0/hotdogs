@@ -11,13 +11,22 @@ export class HotdogsComponent implements OnInit {
 
     hotdogs: Hotdog[];
 
-    constructor(private $hotdogsService: HotdogsService) {
+    constructor(private hotdogsService: HotdogsService) {
     }
 
     ngOnInit() {
-        this.$hotdogsService.all().subscribe((hotdogs: Hotdog[]) => {
+        this.hotdogsService.all.subscribe((hotdogs: Hotdog[]) => {
             this.hotdogs = hotdogs;
         });
+        this.hotdogsService.loadAll();
+    }
+
+    onDelete(id){
+        this.hotdogsService.delete(id).subscribe();
+    }
+
+    onEdit(hotdog: Hotdog) {
+        this.hotdogsService.updateSelected(hotdog);
     }
 
 }

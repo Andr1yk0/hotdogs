@@ -46,3 +46,5 @@ testem.log
 Thumbs.db
 
 server/.env
+server/data.json
+server/public/uploads

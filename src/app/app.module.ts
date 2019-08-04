@@ -6,15 +6,17 @@ import {AppComponent} from './app.component';
 import {HotdogsComponent} from './hotdogs/hotdogs.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatGridListModule, MatIconModule, MatListModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule} from '@angular/material';
 import { EditHotdogsComponent } from './hotdogs/edit-hotdogs/edit-hotdogs.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {DefaultImageDirective} from './default-image.directive';
 
 @NgModule({
     declarations: [
         AppComponent,
         HotdogsComponent,
-        EditHotdogsComponent
+        EditHotdogsComponent,
+        DefaultImageDirective
     ],
     imports: [
         BrowserModule,
@@ -25,7 +27,9 @@ import {ReactiveFormsModule} from '@angular/forms';
         MatGridListModule,
         ReactiveFormsModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     providers: [],
     bootstrap: [AppComponent]

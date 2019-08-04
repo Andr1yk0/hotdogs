@@ -1,13 +1,27 @@
 <mat-list role="list">
-  <mat-list-item *ngFor="let hotdog of hotdogs" role="listitem">
-    <img matListAvatar src="{{hotdog.img}}" alt="...">
-    <p matLine>
-      {{hotdog.title}}
-    </p>
-    <p matLine>
-      <button mat-icon-button color="primary" aria-label="Edit"><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button color="warn" aria-label="Delete"><mat-icon>delete</mat-icon></button>
-    </p>
+    <mat-list-item *ngFor="let hotdog of hotdogs" role="listitem">
+        <img width="100" matListAvatar src="{{hotdog.img}}" alt="...">
+        <h2 matLine>
+            {{hotdog.title}}
+        </h2>
+        <p matLine>
+            <button
+                    mat-icon-button
+                    color="primary"
+                    aria-label="Edit"
+                    (click)="onEdit(hotdog)"
+            >
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button
+                    mat-icon-button
+                    color="warn"
+                    aria-label="Delete"
+                    (click)="onDelete(hotdog.id)"
+            >
+                <mat-icon>delete</mat-icon>
+            </button>
+        </p>
 
-  </mat-list-item>
+    </mat-list-item>
 </mat-list>

@@ -1,22 +1,35 @@
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const Hotdog = require('./hotdog');
 
 dotenv.config();
 const app = express();
 
 app.use(cors());
-
-app.get('/api/hotdogs', function (req, res) {
-    let json = JSON.parse(fs.readFileSync('data.json'));
-    console.log(1, json);
-    res.json(json.data);
-});
-
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
+app.get('/api/hotdogs', function (req, res) {
+    res.json(Hotdog.all())
+});
+
+app.patch('/api/hotdogs/:id', function (req, res) {
+    Hotdog.update(+req.params.id, req.body);
+    res.json(Hotdog.all())
+});
+
+app.post('/api/hotdogs', (req, res) => {
+    Hotdog.create(req.body);
+    res.json(Hotdog.all())
+});
+
+app.delete('/api/hotdogs/:id', (req, res) => {
+   Hotdog.delete(+req.params.id);
+   res.json(Hotdog.all());
+});
 
 app.listen(process.env.PORT, function () {
     console.log('listen port ' + process.env.PORT)
