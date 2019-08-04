@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HotdogsService} from '../hotdogs.service';
 import {Hotdog} from '../hotdog.model';
+import {environment} from '../../environments/environment';
+import {config} from 'rxjs';
 
 @Component({
     selector: 'app-hotdogs',
@@ -10,6 +12,7 @@ import {Hotdog} from '../hotdog.model';
 export class HotdogsComponent implements OnInit {
 
     hotdogs: Hotdog[];
+    imgPath: string = environment.imagePath;
 
     constructor(private hotdogsService: HotdogsService) {
     }
@@ -21,8 +24,10 @@ export class HotdogsComponent implements OnInit {
         this.hotdogsService.loadAll();
     }
 
-    onDelete(id){
-        this.hotdogsService.delete(id).subscribe();
+    onDelete(id) {
+        if (confirm('Delete hotdog?')) {
+            this.hotdogsService.delete(id).subscribe();
+        }
     }
 
     onEdit(hotdog: Hotdog) {

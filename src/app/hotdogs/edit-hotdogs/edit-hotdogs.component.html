@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
         <p>
-            <img width="100" [src]="form.controls['img'].value">
+            <img width="100"  [src]="imagePreview">
         </p>
         <input type="file"  #imageInput (change)="onImageSelected()">
     </div>

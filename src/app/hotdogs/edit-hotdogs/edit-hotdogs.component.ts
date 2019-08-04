@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {HotdogsService} from '../../hotdogs.service';
 import {Hotdog} from '../../hotdog.model';
 import {take} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-edit-hotdogs',
@@ -14,6 +15,7 @@ export class EditHotdogsComponent implements OnInit {
     form: FormGroup;
     hotdog: Hotdog = null;
     btnText = 'Create';
+    imagePreview;
 
     @ViewChild('imageInput')
     imageInput: ElementRef;
@@ -25,6 +27,7 @@ export class EditHotdogsComponent implements OnInit {
         this.initForm();
         this.hotdogsService.selected.subscribe((hotdog: Hotdog) => {
             this.hotdog = hotdog;
+            this.imagePreview = environment.imagePath + (hotdog ? hotdog.img : null);
             this.initForm();
         });
     }
@@ -48,6 +51,7 @@ export class EditHotdogsComponent implements OnInit {
         reader.onload = () => {
             // @ts-ignore
             this.form.controls.img.patchValue(reader.result);
+            this.imagePreview = reader.result;
             this.form.markAsDirty();
         };
     }

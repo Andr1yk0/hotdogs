@@ -1,6 +1,6 @@
 <mat-list role="list">
     <mat-list-item *ngFor="let hotdog of hotdogs" role="listitem">
-        <img width="100" matListAvatar src="{{hotdog.img}}" alt="...">
+        <img width="100" matListAvatar src="{{imgPath + hotdog.img}}" alt="...">
         <h2 matLine>
             {{hotdog.title}}
         </h2>

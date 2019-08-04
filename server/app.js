@@ -9,14 +9,14 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '5mb'}));
 app.use(express.static('public'));
 
-app.get('/api/hotdogs', function (req, res) {
+app.get('/api/hotdogs', (req, res) => {
     res.json(Hotdog.all())
 });
 
-app.patch('/api/hotdogs/:id', function (req, res) {
+app.patch('/api/hotdogs/:id', (req, res) => {
     Hotdog.update(+req.params.id, req.body);
     res.json(Hotdog.all())
 });
@@ -31,7 +31,5 @@ app.delete('/api/hotdogs/:id', (req, res) => {
    res.json(Hotdog.all());
 });
 
-app.listen(process.env.PORT, function () {
-    console.log('listen port ' + process.env.PORT)
-});
+app.listen(process.env.PORT);
 
