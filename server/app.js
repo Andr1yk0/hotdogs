@@ -36,5 +36,7 @@ app.delete('/api/hotdogs/:id', (req, res) => {
    res.json(Hotdog.all());
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+    console.log(process.env.PORT);
+});
 
