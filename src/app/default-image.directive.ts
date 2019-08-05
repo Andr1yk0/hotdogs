@@ -4,7 +4,7 @@ import {Directive, HostListener} from '@angular/core';
     selector: 'img[src], img[attr.src]'
 })
 export class DefaultImageDirective {
-    public defaultImg = 'assets/images/default.png';
+    public defaultImg = 'ng/assets/images/default.png';
 
     @HostListener('error', ['$event'])
     onError(event) {

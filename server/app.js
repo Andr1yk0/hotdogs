@@ -12,6 +12,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(express.static('public'));
 
+
+app.get('/', (req, res) => {
+    res.sendFile('public/ng/index.html', {root: __dirname});
+});
+
 app.get('/api/hotdogs', (req, res) => {
     res.json(Hotdog.all())
 });
