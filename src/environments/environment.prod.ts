@@ -1,4 +1,4 @@
-const domain = 'https://hotdogs-248721.appspot.com';
+const domain = 'http://35.225.64.73';
 
 export const environment = {
   production: true,
