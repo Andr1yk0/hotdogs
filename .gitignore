@@ -47,5 +47,6 @@ Thumbs.db
 
 server/.env
 server/data.json
+server/messages.json
 server/public/uploads
 server/public/ng
